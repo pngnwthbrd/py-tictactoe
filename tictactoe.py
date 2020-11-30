@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # size of the grid
 GRID_SIZE = 9
 # create the grid
