@@ -2,19 +2,25 @@
 
 # size of the grid
 GRID_SIZE = 9
-# create the grid
-grid = ["-"] * GRID_SIZE
+
+# init the grid
+grid = []
 
 # player
-player1 = "x"
-player2 = "o"
+PLAYER1 = "x"
+PLAYER2 = "o"
 # set player on game start
-player = player1
+player = PLAYER1
 
 # if game still running
 game_still_running = True
 # draw
 tie = False
+
+# create the grid
+def create_empty_grid():
+    global grid
+    grid = ["-"] * GRID_SIZE
 
 def display_grid():
     global grid
@@ -69,10 +75,10 @@ def check_grid():
 def change_player():
     global player
 
-    if player == player1:
-        player = player2
+    if player == PLAYER1:
+        player = PLAYER2
     else:
-        player = player1
+        player = PLAYER1
 
 def set_grid_value(key):
     global grid, player
@@ -84,7 +90,20 @@ def field_is_occupied(key):
 
     return grid[field-1] != "-"
 
+def check_revenge():
+    global game_still_running
+    revenge = ""
+    while revenge not in ("y", "n"):
+        revenge = input("Play again? (y/n): ")
+
+    if revenge == "y":
+        game_still_running = True
+        create_empty_grid()
+        display_grid()
+
+
 # start the game
+create_empty_grid()
 display_grid()
 while game_still_running:
     field = int(input(player + " please choose your field (1-9): "))
@@ -98,7 +117,9 @@ while game_still_running:
 
     if tie:
         print("Tie!")
+        check_revenge()
     elif not game_still_running:
         print("Congratulation, " + player + " you won!")
+        check_revenge()
     else:
         change_player()
