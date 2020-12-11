@@ -51,26 +51,11 @@ def check_grid():
     dia3 = grid[2] == grid[4] == grid[6] != "-"
     dia4 = grid[8] == grid[4] == grid[0] != "-"
 
-    if row1:
+    if row1 or row2 or row3 or \
+       col1 or col2 or col3 or \
+       dia1 or dia2 or dia3 or dia4:
         game_still_running = False
-    elif row2:
-        game_still_running = False
-    elif row3:
-        game_still_running = False
-    elif col1:
-        game_still_running = False
-    elif col2:
-        game_still_running = False
-    elif col3:
-        game_still_running = False
-    elif dia1:
-        game_still_running = False
-    elif dia2:
-        game_still_running = False
-    elif dia3:
-        game_still_running = False
-    elif dia4:
-        game_still_running = False
+    
 
 def change_player():
     global player
