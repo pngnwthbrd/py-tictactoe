@@ -32,11 +32,6 @@ def display_grid():
 def check_grid():
     global game_still_running, grid, tie
 
-    if "-" not in grid:
-        tie = True
-        game_still_running = False
-        pass
-
     # check row's
     row1 = grid[0] == grid[1] == grid[2] != "-"
     row2 = grid[3] == grid[4] == grid[5] != "-"
@@ -55,6 +50,11 @@ def check_grid():
        col1 or col2 or col3 or \
        dia1 or dia2 or dia3 or dia4:
         game_still_running = False
+
+    if "-" not in grid and game_still_running == True:
+        tie = True
+        game_still_running = False
+        pass
     
 
 def change_player():
